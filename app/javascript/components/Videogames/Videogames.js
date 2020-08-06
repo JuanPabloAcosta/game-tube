@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, Fragment} from 'react'
 
 const Videogames = () => {
     const [videogames, setVideogames] = useState([])
@@ -6,25 +6,37 @@ const Videogames = () => {
     useEffect(() => {
         const getData = async (url) =>{
             const response = await fetch(url,{
-                method: "GET"
+                method: "GET",
+                headers: { 'Content-Type': 'application/json' }
             })
-            console.log(response)
             return await response.json()
         }
-        const data = getData('/api/v1/videogames.json')
+        
+        (async () => {
+            const data = await getData('/api/v1/videogames.json')
+            setVideogames(data.data)
+        })()
+
+    }, [videogames.length]) 
+
+    const list = videogames.map( game => {
+        return (<li key={game.attributes.name}>{game.attributes.name}</li>)
     })
 
-/*  useEffect(() => {
-    async function fetchData() {
-        // You can await here
-        const response = await MyAPI.getData(someId);
-        // ...
-    }
-    fetchData();
-    }, [someId]); */
-    
     return(
-        <div>Acá juegos melos</div>
+        <>
+            <div className = "home">
+                <div className = "navbar">
+                    
+                </div>
+                <div className = "info-carrusel">
+                        
+                </div>
+                <div className = "carrusel">
+                    <ul>{list}</ul>
+                </div>
+            </div>
+        </>
     )
 }
 
