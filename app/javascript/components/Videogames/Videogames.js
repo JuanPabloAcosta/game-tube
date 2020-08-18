@@ -1,5 +1,8 @@
 import React, {useState, useEffect, Fragment} from 'react'
 import Videogame from './Videogame'
+import Navbar from './Navbar'
+import InfoCarrusel from './InfoCarrusel'
+import Carrusel from './Carrusel'
 
 const Videogames = () => {
     const [videogames, setVideogames] = useState([])
@@ -19,7 +22,7 @@ const Videogames = () => {
         })()
 
     }, [videogames.length]) 
-
+    
     const grid = videogames.map( game => {
         return (
             <Videogame 
@@ -29,41 +32,11 @@ const Videogames = () => {
     })
 
     return(
-        <>
-            <div className = "home">
-                <div className = "navbar">
-                    <div>
-                        <div>Hora: 08:38 am</div>
-                        <div>Hora: 08:38 am</div>
-                    </div>
-                    <div>
-                        <div>Hora: 08:38 am</div>
-                        <div>Hora: 08:38 am</div>
-                    </div>
-                    <div>
-                        <div>Hora: 08:38 am</div>
-                        <div>Hora: 08:38 am</div>
-                    </div>
-                </div>
-                <div className = "info-carrusel">
-                        <div className = "subnavbar">
-                            <button>Title</button>
-                            <button>Title</button>
-                            <button>Title</button>
-                            <button>Title</button>
-                            <button>Title</button>
-                            <button>Title</button>
-                            <button>Title</button>
-                        </div>
-                        <div>
-                            Description
-                        </div>
-                </div>
-                <div className = "carrusel">
-                    <ul>{grid}</ul>
-                </div>
-            </div>
-        </>
+        <div className = "home">
+            <Navbar/>
+            <InfoCarrusel/>
+            <Carrusel images = {grid} />
+        </div>
     )
 }
 

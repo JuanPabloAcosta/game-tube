@@ -18,10 +18,19 @@ def request(url,payload)
 
 end
 
-videogames = request('https://api-v3.igdb.com/games/', 'fields name; search "Halo";')
-videogames.map do |videogame|
-    query_id = "fields url; where game = #{videogame["id"]};"
-    image = request('https://api-v3.igdb.com/covers', query_id)
-    Videogame.create(name: "#{videogame["name"]}", image_url: image[0]["url"])
+games = RestClient.get('https://api.rawg.io/api/games?search=Halo&page=1')
+json_games = JSON.parse games
+
+json_games = json_games["results"]
+
+json_games.map do |game|
+    Videogame.create(name: "#{game["name"]}", image_url: "#{game["background_image"]}", background_image_url: "#{game["short_screenshots"][2]["image"]}")
 end
+
+#videogames = request('https://api-v3.igdb.com/games/', 'fields name; search "Halo";')
+#videogames.map do |videogame|
+#    query_id = "fields url; where game = #{videogame["id"]};"
+#    image = request('https://api-v3.igdb.com/covers', query_id)
+#    Videogame.create(name: "#{videogame["name"]}", image_url: image[0]["url"])
+#end
 
