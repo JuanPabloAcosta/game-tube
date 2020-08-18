@@ -3,7 +3,7 @@ import React from 'react'
 const Carrusel = (props) => {
     return(
         <div className = "carrusel">
-            <ul className = "imag">{props.images}</ul>
+            <ul>{props.images}</ul>
         </div>
     )
 }

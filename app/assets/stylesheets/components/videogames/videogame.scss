@@ -3,11 +3,30 @@
     height: $y;
 }
 
+@keyframes expand { 
+    from {
+        transform: scale(1); 
+        padding: 0px;
+    } 
+    to {
+        transform: scale(1.2);
+        padding: 4px;
+    } 
+} 
+
 .card{
     .game-logo{
-        @include rectangle(400px, 400px);
+        margin: 0.5em;
+        @include rectangle(150px, 150px);
         img{
             @include rectangle(100%, 100%);
+            &:hover{
+                border: 1px solid white;
+                animation: expand 0.5s;
+                cursor: pointer;
+                padding: 4px;
+                transform: scale(1.2);
+            }
         }
     }
 }

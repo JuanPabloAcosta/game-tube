@@ -1,3 +1,11 @@
 .home {
+    filter: brightness(0.8);
+    -webkit-box-shadow: inset -50px 0px 76px 41px rgba(0,0,0,0.29);
+    -moz-box-shadow: inset -50px 0px 76px 41px rgba(0,0,0,0.29);
+    box-shadow: inset -50px 0px 76px 41px rgba(0,0,0,0.29);
     background-image: url("https://media.rawg.io/media/screenshots/495/49584d91c54fc206a0e1922c89d4fc02.jpg");
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }   
