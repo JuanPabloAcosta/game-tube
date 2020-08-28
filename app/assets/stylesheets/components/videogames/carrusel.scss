@@ -1,7 +1,19 @@
 .carrusel {
     ul{
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        overflow: auto;
+        height: 110%;
+        align-items: center;
+        &::-webkit-scrollbar {
+        width: 5px;
+        height: 6px;
+        }
+        &::-webkit-scrollbar-track {
+        background: rgba(243, 250, 217, 0);
+        }
+        &::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.377);
+        border-radius: 10px;
+        }
     }
 }
